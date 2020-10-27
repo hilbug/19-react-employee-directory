@@ -1,7 +1,8 @@
 import React from "react";
-import Header from "../components/Header/index";
-import Container from "../components/Container/index";
-import SearchBox from "../components/SearchBox/index";
+import Header from "../components/Header";
+import Container from "../components/Container";
+import SearchBox from "../components/SearchBox";
+import TableResults from "../components/TableResults";
 
 function Directory() {
     return (
@@ -9,6 +10,7 @@ function Directory() {
             <Header />
             <Container>
                 <SearchBox />
+                <TableResults />
             </Container>
         </div>
     )
