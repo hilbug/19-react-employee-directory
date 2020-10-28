@@ -1,9 +1,9 @@
 import React from 'react';
 
 function TableResults(props) {
-
     let rows = props.results.map(emp => (
-        <tr key={emp.login.username}>
+        <tr key={emp.id.value}>
+            <td>{emp.id.value}</td>
             <td>{emp.login.username}</td>
             <td>{emp.name.first}</td>
             <td>{emp.name.last}</td>
@@ -14,20 +14,36 @@ function TableResults(props) {
 
     return (
         <div className="row">
-			<table className="table table-striped">
-				<thead className="thead-dark">
-					<tr>
-						<th scope="col">Username</th>
-                        <th scope="col">First Name</th>
-						<th scope="col">Last Name</th>
-						<th scope="col">E-mail</th>
-                        <th scope="col">Cell Phone</th>
-					</tr>
-				</thead>
-				<tbody>{rows}</tbody>
-			</table>
-		</div>
+            <div className="table-responsive-lg">
+                <table className="table table-striped mx-auto">
+                    <caption>List of employees</caption>
+                    <thead className="thead-dark">
+                        <tr>
+                            <th scope="col">Employee Id
+                            <button className="btn text-white" onClick={props.onSortChange}>
+                                    <i className={`fas fa-sort`}></i>
+                                </button>
+                            </th>
+                            <th scope="col">Username</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name
+                            <button className="btn text-white" onClick={props.onSortChange}>
+                                    <i className={`fas fa-sort`}></i>
+                                </button></th>
+                            <th scope="col">E-mail</th>
+                            <th scope="col">Cell Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>{rows}</tbody>
+                </table>
+            </div>
+        </div>
     )
 }
 
 export default TableResults;
+
+// Notes
+// Week 19 Activity 23-Pupster - SearchResults
+// Bootstrap Tables https://getbootstrap.com/docs/4.5/content/tables/
+// Sort table with react https://www.florin-pop.com/blog/2019/07/sort-table-data-with-react/

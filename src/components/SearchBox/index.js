@@ -18,11 +18,6 @@ function SearchBox(props) {
                         placeholder="Start typing a name..."
                         id="empsearch"
                     />
-                        {/* <datalist id="breeds">
-                            {props.breeds.map(breed => (
-                            <option value={breed} key={breed} />
-                            ))}
-                        </datalist> */}
                     <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success">
                         Search
                     </button>
@@ -33,3 +28,5 @@ function SearchBox(props) {
 }
 
 export default SearchBox;
+
+// Change to material? https://material-ui.com/components/text-fields/  https://material-ui.com/components/buttons/
