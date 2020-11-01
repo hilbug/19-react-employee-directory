@@ -5,23 +5,19 @@ function SearchBox(props) {
     return (
         <div>
             <h2 className="text-center">Search for employees!</h2>
-            {/* <form onSubmit={props.handleFormSubmit} className="search form-inline d-flex align-items-center"> */}
+            {/* Remove form to get rid of "enter" being usable */}
             <form className="search form-inline d-flex align-items-center">
                 <div className="form-group mx-auto">
                     <label htmlFor="empsearch">Employee Last Name:</label>
                     <input
-                        //value={props.search}
+                        value={props.search}
                         onChange={props.handleInputChange}  // maybe only need this and not handleformsubmit
                         name="search"
                         type="search"
                         className="form-control mx-2"
-                        placeholder="Start typing a last name..."
+                        placeholder="Last name..."
                         id="empsearch"
                     />
-                    {/* <button type="submit" className="btn btn-success">
-                        on submit allows us to use the enter key 
-                        Search
-                    </button>*/}
                 </div>
             </form>
         </div>

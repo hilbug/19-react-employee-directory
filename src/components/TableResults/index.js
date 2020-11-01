@@ -1,7 +1,10 @@
 import React from 'react';
 
 function TableResults(props) {
-    let rows = props.results.map(emp => (
+    
+    let employees = props.results.filter(emp => emp.name.last.toLowerCase().includes(props.search));
+
+    let rows = employees.map(emp => (
         <tr key={emp.id.value}>
             <td>{emp.id.value}</td>
             <td>{emp.login.username}</td>

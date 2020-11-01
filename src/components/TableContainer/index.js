@@ -17,26 +17,6 @@ class TableContainer extends Component {
         //this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 
-    // function to sort the results and setState with new results
-    onSortChange = () => {
-        let sortArray = [...this.state.results];
-        if (this.state.currentSort === 'asc') {
-            sortArray.sort((a, b) => (a.name.last > b.name.last ? 1 : -1));
-            this.setState({
-                ...this.state,
-                sorted: sortArray,
-                currentSort: 'desc'
-            });
-        } else {
-            sortArray.sort((a, b) => (a.name.last < b.name.last ? 1 : -1));
-            this.setState({
-                ...this.state,
-                sorted: sortArray,
-                currentSort: 'asc'
-            });
-        }
-    };
-
     // get employee data
     componentDidMount() {
         API.getRandomEmployees()
@@ -51,16 +31,33 @@ class TableContainer extends Component {
     // get the search value and add to state
     handleInputChange = event => {
         event.preventDefault();
-        let filteredArray = [...this.state.results];
-        let filteredResults = filteredArray.filter(emp => emp.name.last.toLowerCase().includes(event.target.value.toLowerCase()));
         
         this.setState(
             { 
                 ...this.state,
-                search: event.target.value.toLowerCase(),
-                filtered: filteredResults
+                search: event.target.value.toLowerCase()
             }
         );
+    };
+
+    // function to sort the results and setState with new results
+    onSortChange = () => {
+        let sortArray = [...this.state.results];
+        if (this.state.currentSort === 'asc') {
+            sortArray.sort((a, b) => (a.name.last > b.name.last ? 1 : -1));
+            this.setState({
+                ...this.state,
+                results: sortArray,
+                currentSort: 'desc'
+            });
+        } else {
+            sortArray.sort((a, b) => (a.name.last < b.name.last ? 1 : -1));
+            this.setState({
+                ...this.state,
+                results: sortArray,
+                currentSort: 'asc'
+            });
+        }
     };
 
     // handleFormSubmit
@@ -97,9 +94,11 @@ class TableContainer extends Component {
                 />
                 {/* this.state.results probably needs to change to filtered */}
                 <TableResults 
+                    results={this.state.results}
                     // results={this.state.search.length > 0 ? this.state.filtered : this.state.sorted} 
-                    results={this.state.search.length > 0 ? this.state.filtered : (this.state.sorted.length > 0 ? this.state.sorted : this.state.results)} 
+                    // results={this.state.search.length > 0 ? this.state.filtered : (this.state.sorted.length > 0 ? this.state.sorted : this.state.results)} 
                     onSortChange={this.onSortChange} 
+                    search={this.state.search}
                 />
             </div>
         );
