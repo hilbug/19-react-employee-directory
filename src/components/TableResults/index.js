@@ -17,8 +17,8 @@ function TableResults(props) {
 
     return (
         <div className="row">
-            <div className="table-responsive-lg">
-                <table className="table table-striped mx-auto">
+            <div className="table-responsive">
+                <table className="table table-striped">
                     <caption>List of employees</caption>
                     <thead className="thead-dark">
                         <tr>
