@@ -1,3 +1,42 @@
+# Employee Directory Search
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Description
+This app mimics an employee directory with sorting and filtering capabilities. A user can sort results by an employee's last name or can search employee last names to filter down results. It was created using the React JavaScript library.
+
+### Deployed App
+Check out the Employee Directory [here!](https://hilbug.github.io/19-react-employee-directory/)
+
+### App Preview
+![Employee Directory (1)](https://user-images.githubusercontent.com/65197724/97817909-446ded80-1c6d-11eb-925e-00959072c0ed.gif)
+
+### Technologies Used
+- HTML/CSS
+- Bootstrap
+- React
+- JavaScript
+- [Random User API](https://randomuser.me/api/?results=50&nat=us)
+
+## Honorable Mentions
+- Thank you to Mike, Bobby, and fellow students for their assistance with filtering results!
+- Favicon from [icons8](https://icons8.com/icon/pack/data/offices)
+- [Create React App](https://github.com/facebook/create-react-app)
+
+## User Story
+```
+As a user, I want to be able to view my entire employee directory at once so that I have quick access to their information.
+```
+
+## Acceptance Criteria
+```
+Given a table of random users, when the user loads the page, a table of employees should render. 
+The user should be able to:
+- Sort the table by at least one category
+- Filter the users by at least one property.
+```
+
+# Create React App Info
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
