@@ -2,8 +2,10 @@ import React from 'react';
 
 function TableResults(props) {
     
+    // filter down the results if there is a search word entered
     let employees = props.results.filter(emp => emp.name.last.toLowerCase().includes(props.search));
 
+    // map the employee results to table rows
     let rows = employees.map(emp => (
         <tr key={emp.id.value}>
             <td>{emp.id.value}</td>
@@ -15,6 +17,7 @@ function TableResults(props) {
         </tr>
     ));
 
+    // create headers and pass in rows
     return (
         <div className="row">
             <div className="table-responsive">

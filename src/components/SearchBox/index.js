@@ -1,5 +1,6 @@
 import React from "react";
-import "./style.css";
+
+// search box is a bootstrap input group
 
 function SearchBox(props) {
     return (
@@ -11,10 +12,10 @@ function SearchBox(props) {
                     </div>
                     <input
                         value={props.search}
-                        onChange={props.handleInputChange}  // only need this and not handleformsubmit
+                        onChange={props.handleInputChange}
                         name="search"
                         type="search"
-                        className="form-control mx-2"
+                        className="form-control"
                         placeholder="Last name..."
                         id="empsearch"
                     />
@@ -27,3 +28,4 @@ export default SearchBox;
 
 // Notes
 // Week 19 Activity 23-Pupster - SearchForm
+// Only needed handleInputChange here and not handleformsubmit

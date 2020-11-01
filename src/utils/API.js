@@ -1,6 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import axios from "axios";
 
+// limit to 50 employees
 const EMPURL = "https://randomuser.me/api/?results=50&nat=us";
 
 export default {
