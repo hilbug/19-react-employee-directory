@@ -8,16 +8,13 @@ class TableContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            results: [], // original copy - don't change,
-            sorted: [],
-            filtered: [],
+            results: [], // original copy - don't change
             currentSort: 'asc',
             search: ""
         };
-        //this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 
-    // get employee data
+    // get employee data from the API
     componentDidMount() {
         API.getRandomEmployees()
             .then(res => this.setState(
@@ -60,43 +57,15 @@ class TableContainer extends Component {
         }
     };
 
-    // handleFormSubmit
-    // event.preventDefault();
-    // is this using the search value to set results as a filtered array based on the search term?
-    // new array just to use for filtering.
-    // another state property basetable - table dependent on filtered data
-    // sort and filter would use the basetable data and update the filtered table data.
-    // filteredArray = results
-    /*
-    handleFormSubmit(event) {
-        event.preventDefault();
-        let filteredArray = [...this.state.results];
-        // if i want elem.firstName to filter on more than one i could do "OR". this also probably needs to be a "like" what is typed comparison...
-        // maybe just need this in handleInputChange
-        let filteredResults = filteredArray.filter(emp => emp.name.last.toLowerCase().includes(this.state.search.toLowerCase()));
-
-        this.setState(
-            {
-            ...this.state,
-            filtered: filteredResults
-            }
-        );
-    }
-    */
     // render the table results component with the current state
     render() {
         return (
             <div>
-                <SearchBox 
-                    //search={this.state.search}
-                    //handleFormSubmit={this.handleFormSubmit} 
+                <SearchBox  
                     handleInputChange={this.handleInputChange} 
                 />
-                {/* this.state.results probably needs to change to filtered */}
                 <TableResults 
-                    results={this.state.results}
-                    // results={this.state.search.length > 0 ? this.state.filtered : this.state.sorted} 
-                    // results={this.state.search.length > 0 ? this.state.filtered : (this.state.sorted.length > 0 ? this.state.sorted : this.state.results)} 
+                    results={this.state.results} 
                     onSortChange={this.onSortChange} 
                     search={this.state.search}
                 />
@@ -108,4 +77,4 @@ class TableContainer extends Component {
 export default TableContainer;
 
 // Notes
-// sort array of objects: https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/
+// Sort array of objects: https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/
