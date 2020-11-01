@@ -5,20 +5,20 @@ function SearchBox(props) {
     return (
         <div>
             <h2 className="text-center">Search for employees!</h2>
-            <form className="search form-inline d-flex align-items-center">
+            <form onSubmit={props.handleFormSubmit} className="search form-inline d-flex align-items-center">
                 <div className="form-group mx-auto">
-                    <label htmlFor="empsearch">Employee Name:</label>
+                    <label htmlFor="empsearch">Employee Last Name:</label>
                     <input
                         value={props.search}
-                        onChange={props.handleInputChange}
+                        onChange={props.handleInputChange}  // maybe only need this and not handleformsubmit
                         name="search"
-                        // list="employees"
                         type="text"
                         className="form-control mx-2"
-                        placeholder="Start typing a name..."
+                        placeholder="Start typing a last name..."
                         id="empsearch"
                     />
-                    <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success">
+                    <button type="submit" className="btn btn-success">
+                        {/* on submit allows us to use the enter key */}
                         Search
                     </button>
                 </div>
@@ -29,4 +29,4 @@ function SearchBox(props) {
 
 export default SearchBox;
 
-// Change to material? https://material-ui.com/components/text-fields/  https://material-ui.com/components/buttons/
+// Week 19 Activity 23-Pupster - SearchForm
