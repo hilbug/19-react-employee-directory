@@ -9,11 +9,12 @@ class TableContainer extends Component {
         super(props)
         this.state = {
             results: [], // original copy - don't change,
+            sorted: [],
             filtered: [],
             currentSort: 'asc',
             search: ""
         };
-        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        //this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 
     // function to sort the results and setState with new results
@@ -22,13 +23,15 @@ class TableContainer extends Component {
         if (this.state.currentSort === 'asc') {
             sortArray.sort((a, b) => (a.name.last > b.name.last ? 1 : -1));
             this.setState({
-                results: sortArray,
+                ...this.state,
+                sorted: sortArray,
                 currentSort: 'desc'
             });
         } else {
             sortArray.sort((a, b) => (a.name.last < b.name.last ? 1 : -1));
             this.setState({
-                results: sortArray,
+                ...this.state,
+                sorted: sortArray,
                 currentSort: 'asc'
             });
         }
@@ -47,10 +50,15 @@ class TableContainer extends Component {
 
     // get the search value and add to state
     handleInputChange = event => {
+        event.preventDefault();
+        let filteredArray = [...this.state.results];
+        let filteredResults = filteredArray.filter(emp => emp.name.last.toLowerCase().includes(event.target.value.toLowerCase()));
+        
         this.setState(
             { 
+                ...this.state,
                 search: event.target.value.toLowerCase(),
-                filtered: []
+                filtered: filteredResults
             }
         );
     };
@@ -62,7 +70,7 @@ class TableContainer extends Component {
     // another state property basetable - table dependent on filtered data
     // sort and filter would use the basetable data and update the filtered table data.
     // filteredArray = results
-
+    /*
     handleFormSubmit(event) {
         event.preventDefault();
         let filteredArray = [...this.state.results];
@@ -77,19 +85,20 @@ class TableContainer extends Component {
             }
         );
     }
-
+    */
     // render the table results component with the current state
     render() {
         return (
             <div>
                 <SearchBox 
                     //search={this.state.search}
-                    handleFormSubmit={this.handleFormSubmit} 
+                    //handleFormSubmit={this.handleFormSubmit} 
                     handleInputChange={this.handleInputChange} 
                 />
                 {/* this.state.results probably needs to change to filtered */}
                 <TableResults 
-                    results={this.state.search.length > 1 ? this.state.filtered : this.state.results} 
+                    // results={this.state.search.length > 0 ? this.state.filtered : this.state.sorted} 
+                    results={this.state.search.length > 0 ? this.state.filtered : (this.state.sorted.length > 0 ? this.state.sorted : this.state.results)} 
                     onSortChange={this.onSortChange} 
                 />
             </div>
